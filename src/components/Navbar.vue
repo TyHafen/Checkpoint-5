@@ -24,6 +24,11 @@
           </router-link>
         </li>
       </ul>
+      <div class="row">
+        <div class="col-12">
+          <Search />
+        </div>
+      </div>
       <div v-for="b in billboards" :key="b.id" class="col-3">
         <Billboard :billboard="b" />
       </div>
@@ -63,7 +68,7 @@
             aria-labelledby="authDropdown"
           >
             <router-link :to="{ name: 'Profile', params: { id: account.id } }">
-              <div class="list-group-item list-group-item-action hoverable">
+              <div class="list-group-item list-group-item-action">
                 Your Profile
               </div>
             </router-link>

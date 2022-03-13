@@ -10,7 +10,7 @@ class PostsService {
         AppState.posts = res.data.posts
         AppState.newerPosts = res.data.newer
         AppState.olderPosts = res.data.older
-        logger.log(AppState.olderPosts)
+
     }
 
     async pageTurn(page) {
