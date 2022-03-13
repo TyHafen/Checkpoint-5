@@ -90,9 +90,7 @@ import { AuthService } from "../services/AuthService";
 import { AppState } from "../AppState";
 import { computed, onMounted } from "vue";
 import { billboardService } from "../services/BillboardService";
-import Pop from "../utils/Pop";
 import { logger } from "../utils/Logger";
-import billboard from "./billboard.vue";
 
 export default {
   setup() {
@@ -100,7 +98,6 @@ export default {
       try {
         await billboardService.getAll();
       } catch (error) {
-        Pop.toast(error.message, "error");
         logger.error(error);
       }
     });

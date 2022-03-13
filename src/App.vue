@@ -24,10 +24,9 @@
 <script>
 import { computed } from "vue";
 import { AppState } from "./AppState";
-import Pop from "../utils/Pop";
-import { logger } from "../utils/Logger";
-import { postsService } from "./services/PostsService";
 
+import { postsService } from "./services/PostsService";
+import { logger } from "./utils/Logger";
 export default {
   name: "App",
   setup() {
@@ -41,7 +40,6 @@ export default {
           await postsService.pageTurn(page);
         } catch (error) {
           logger.error(error);
-          Pop.toast(error.message, "error");
         }
       },
     };

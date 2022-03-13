@@ -12,7 +12,7 @@
 <script>
 import { AppState } from "../AppState";
 import { computed, reactive, onMounted } from "vue";
-import Pop from "../utils/Pop";
+
 import { logger } from "../utils/Logger";
 import { postsService } from "../services/PostsService";
 
@@ -22,7 +22,6 @@ export default {
       try {
         await postsService.getAll();
       } catch (error) {
-        Pop.toast(error.message, "error");
         logger.error(error);
       }
     });

@@ -1,3 +1,4 @@
+import { applyStyles } from '@popperjs/core'
 import { AppState } from '../AppState'
 import { logger } from '../utils/Logger'
 import { api } from './AxiosService'
@@ -9,10 +10,14 @@ class PostsService {
         AppState.posts = res.data.posts
         AppState.newerPosts = res.data.newer
         AppState.olderPosts = res.data.older
+        logger.log(AppState.olderPosts)
     }
 
     async pageTurn(page) {
-        const res = await api.get('api/posts/', page)
+        const res = await api.get(page)
+        AppState.posts = res.data.posts
+        AppState.newerPosts = res.data.newer
+        AppState.olderPosts = res.data.older
 
     }
     async getProfilePosts(id) {
