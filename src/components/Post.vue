@@ -15,7 +15,7 @@
           <div class="d-flex">
             <p class="card-text body-text p-2">{{ post.body }}</p>
             <div
-              @click="remove(profile.id)"
+              @click="remove(post.id)"
               v-if="account.id == profile.id"
               class="mdi mdi-delete"
             ></div>
@@ -35,6 +35,7 @@ import { postsService } from "../services/PostsService";
 import { useRoute } from "vue-router";
 import { router } from "../router";
 import Pop from "../utils/Pop";
+import { logger } from "../utils/Logger";
 
 export default {
   props: {
@@ -51,8 +52,8 @@ export default {
             await postsService.remove(id);
           }
         } catch (error) {}
-
-        Pop.toast(error.message, "error");
+        logger.log(error);
+        Pop.toast("Something is wroing");
       },
       goTo(page) {
         router.push({

@@ -7,6 +7,13 @@ class PostsService {
     async getAll(query = {}) {
         const res = await api.get("api/posts", { params: query })
         AppState.posts = res.data.posts
+        AppState.newerPosts = res.data.newer
+        AppState.olderPosts = res.data.older
+    }
+
+    async pageTurn(page) {
+        const res = await api.get('api/posts/', page)
+
     }
     async getProfilePosts(id) {
         AppState.profilePosts = {}
@@ -17,9 +24,8 @@ class PostsService {
         const res = await api.post('api/posts/', postData)
         AppState.profilePosts.unshift(res.data)
     }
-    async delete(id) {
+    async remove(id) {
         const res = await api.delete('api/posts/' + id)
-        logger.log('post to delete', res.data)
         AppState.profilePosts = AppState.profilePosts.filter(p => p.id != id)
         AppState.posts = AppState.posts.filter(p => p.id != id)
     }

@@ -7,7 +7,16 @@
       <main>
         <router-view />
       </main>
-      <footer></footer>
+      <footer>
+        <div class="bg-dark text-light text-center p-4">
+          <button @click="pageTurn(newerPosts)" class="rounded mx-3">
+            Newer Posts
+          </button>
+          <button @click="pageTurn(olderPosts)" class="rounded mx-3">
+            Older Posts
+          </button>
+        </div>
+      </footer>
     </div>
   </div>
 </template>
@@ -15,14 +24,26 @@
 <script>
 import { computed } from "vue";
 import { AppState } from "./AppState";
-import Sidebar from "./components/Sidebar.vue";
-import Billboard from "./components/billboard.vue";
+import Pop from "../utils/Pop";
+import { logger } from "../utils/Logger";
+import { postsService } from "./services/PostsService";
+
 export default {
-  components: { Sidebar, Billboard },
   name: "App",
   setup() {
     return {
       appState: computed(() => AppState),
+      newerPosts: computed(() => AppState.newerPosts),
+      olderPosts: computed(() => AppState.olderPosts),
+
+      async pageTurn(page) {
+        try {
+          await postsService.pageTurn(page);
+        } catch (error) {
+          logger.error(error);
+          Pop.toast(error.message, "error");
+        }
+      },
     };
   },
 };

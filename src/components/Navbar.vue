@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-success">
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
     </router-link>
     <button
@@ -24,6 +24,9 @@
           </router-link>
         </li>
       </ul>
+      <div v-for="b in billboards" :key="b.id" class="col-3">
+        <Billboard :billboard="b" />
+      </div>
       <span class="navbar-text">
         <button
           class="
@@ -85,10 +88,24 @@
 <script>
 import { AuthService } from "../services/AuthService";
 import { AppState } from "../AppState";
-import { computed } from "vue";
+import { computed, onMounted } from "vue";
+import { billboardService } from "../services/BillboardService";
+import Pop from "../utils/Pop";
+import { logger } from "../utils/Logger";
+import billboard from "./billboard.vue";
+
 export default {
   setup() {
+    onMounted(async () => {
+      try {
+        await billboardService.getAll();
+      } catch (error) {
+        Pop.toast(error.message, "error");
+        logger.error(error);
+      }
+    });
     return {
+      billboards: computed(() => AppState.billboards),
       user: computed(() => AppState.user),
       account: computed(() => AppState.account),
       async login() {
