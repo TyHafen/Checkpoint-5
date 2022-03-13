@@ -11,9 +11,9 @@
               <h3>{{ profile.bio }}</h3>
             </div>
             <div class="col-3">
-              <h4>{{ profile.linkedin }}</h4>
-              <h4>{{ profile.email }}</h4>
-              <h4>{{ profile.github }}</h4>
+              <a class="mdi mdi-github" :href="profile.github"></a>
+              <a class="mdi mdi-linkedin" :href="profile.linkedin"></a>
+              <a class="mdi mdi-email" :href="profile.email"></a>
             </div>
           </div>
         </div>

@@ -5,9 +5,10 @@
         <div class="card-body rounded">
           <div class="row d-flex" @click="goTo('Profile')">
             <img class="creator-image m-2" :src="post.creator.picture" alt="" />
-            <i>{{ post.creator.linkedin }}</i>
-            <i>{{ post.creator.github }}</i>
-            <i>{{ post.creator.email }}</i>
+            <a class="mdi mdi-github" :href="post.creator.github"></a>
+            <a class="mdi mdi-linkedin" :href="post.creator.linkedin"></a>
+            <a class="mdi mdi-email" :href="post.creator.email"></a>
+
             <h2 class="p-0 m-1 d-flex align-items-center">
               {{ post.creator.name }}
             </h2>
