@@ -2,7 +2,7 @@
   <div class="row container-fluid">
     <div class="row">
       <div class="text-light">
-        <img :src="billboard.banner" alt="" />
+        <img class="img-size" :src="billboard.banner" alt="" />
       </div>
     </div>
   </div>
@@ -25,4 +25,7 @@ export default {
 
 
 <style lang="scss" scoped>
+.img-size {
+  height: 10vh;
+}
 </style>
