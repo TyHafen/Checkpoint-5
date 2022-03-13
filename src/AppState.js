@@ -10,4 +10,5 @@ export const AppState = reactive({
   billboards: [],
   newerPosts: null,
   olderPosts: null
+
 })

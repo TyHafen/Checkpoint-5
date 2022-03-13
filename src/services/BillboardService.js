@@ -4,11 +4,10 @@ import { api } from './AxiosService'
 
 class BillboardService {
     async getAll() {
-        AppState.billboards = {}
-        const res = await api.get('api/ads/')
+        const res = await api.get('api/ads')
         AppState.billboards = res.data
-        logger.log(AppState.billboards)
         logger.log(res.data)
+
     }
 
 

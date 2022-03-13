@@ -1,7 +1,9 @@
 <template>
   <div class="row container-fluid">
     <div class="row">
-      <h1>{{ billboard.name }}</h1>
+      <div class="text-light">
+        <img :src="billboard.banner" alt="" />
+      </div>
     </div>
   </div>
 </template>

@@ -12,6 +12,11 @@ class PostsService {
         AppState.olderPosts = res.data.older
 
     }
+    async likes(id) {
+        const res = await api.post('api/posts/' + id + '/like')
+        logger.log(res.data.likes)
+
+    }
 
     async pageTurn(page) {
         const res = await api.get(page)

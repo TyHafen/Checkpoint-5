@@ -24,14 +24,15 @@
           </router-link>
         </li>
       </ul>
+      <div v-for="b in billboards" :key="b.id" class="col-3">
+        <Billboard :billboard="b" />
+      </div>
       <div class="row">
         <div class="col-12">
           <Search />
         </div>
       </div>
-      <div v-for="b in billboards" :key="b.id" class="col-3">
-        <Billboard :billboard="b" />
-      </div>
+
       <span class="navbar-text">
         <button
           class="

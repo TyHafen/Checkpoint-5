@@ -11,14 +11,19 @@
 
 <script>
 import { AppState } from "../AppState";
-import { computed, reactive, onMounted } from "vue";
-
+import { computed, reactive, onMounted, watchEffect } from "vue";
+import { billboardService } from "../services/BillboardService";
 import { logger } from "../utils/Logger";
 import { postsService } from "../services/PostsService";
 
 export default {
   setup() {
-    onMounted(async () => {
+    watchEffect(async () => {
+      try {
+        await billboardService.getAll();
+      } catch (error) {
+        logger.error(error);
+      }
       try {
         await postsService.getAll();
       } catch (error) {
@@ -27,6 +32,7 @@ export default {
     });
     return {
       posts: computed(() => AppState.posts),
+      billboards: computed(() => AppState.billboards),
     };
   },
 };

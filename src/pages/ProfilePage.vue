@@ -11,9 +11,22 @@
               <h3>{{ profile.bio }}</h3>
             </div>
             <div class="col-3">
-              <a class="mdi mdi-github" :href="profile.github"></a>
-              <a class="mdi mdi-linkedin" :href="profile.linkedin"></a>
-              <a class="mdi mdi-email" :href="profile.email"></a>
+              <a
+                v-if="profile.github"
+                class="mdi mdi-github"
+                :href="profile.github"
+              ></a>
+
+              <a
+                v-if="profile.linkedin"
+                class="mdi mdi-linkedin"
+                :href="profile.linkedin"
+              ></a>
+              <a
+                v-if="profile.email"
+                class="mdi mdi-email"
+                :href="profile.email"
+              ></a>
             </div>
           </div>
         </div>
