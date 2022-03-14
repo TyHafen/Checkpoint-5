@@ -1,12 +1,19 @@
 <template>
-  <div class="container-fluid p-0">
+  <div class="container-fluid">
     <!-- Profile content -->
     <div class="row justify-content-center align-content-center">
       <div class="col-6 d-flex justify-content-center m-3">
         <div class="card shadow rounded p-4 container-fluid">
           <div class="row">
+            <img
+              class="img-fluid cover-img rounded p-3"
+              :src="profile.coverImg"
+              alt=""
+            />
             <div class="col-9">
               <img class="profile-image m-2" :src="profile.picture" alt="" />
+              <h2 v-if="profile.graduated">graduated</h2>
+              <h2 v-if="profile.class">Class of {{ profile.class }}</h2>
               <h2>{{ profile.name }}</h2>
               <h3>{{ profile.bio }}</h3>
             </div>
@@ -120,5 +127,9 @@ export default {
 }
 .email-img {
   height: 65px;
+}
+.cover-img {
+  height: 35vh;
+  width: 100vh;
 }
 </style>

@@ -64,12 +64,22 @@
             placeholder="email"
           />
         </div>
+        <div class="form-group">
+          <label for="class">Class</label>
+          <input
+            v-model="editable.class"
+            type="text"
+            class="form-control"
+            id="class"
+            placeholder="what year did you graduate"
+          />
+        </div>
         <div class="form-check">
           <input
             class="form-check-input"
             type="checkbox"
             value=""
-            id="gradute"
+            id="graduated"
           />
           <label class="form-check-label" for="flexCheckDefault">
             Graduated
