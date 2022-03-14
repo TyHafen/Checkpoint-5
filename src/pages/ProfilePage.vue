@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid p-0">
     <!-- Profile content -->
     <div class="row justify-content-center align-content-center">
       <div class="col-6 d-flex justify-content-center m-3">
@@ -11,34 +11,57 @@
               <h3>{{ profile.bio }}</h3>
             </div>
             <div class="col-3">
-              <a
-                v-if="profile.github"
-                class="mdi mdi-github"
-                :href="profile.github"
-              ></a>
+              <div class="row">
+                <div class="col-12">
+                  <a v-if="profile.github" :href="profile.github">
+                    <img
+                      class="github-img"
+                      src="https://pngimg.com/uploads/github/github_PNG40.png"
+                      alt=""
+                  /></a>
 
-              <a
-                v-if="profile.linkedin"
-                class="mdi mdi-linkedin"
-                :href="profile.linkedin"
-              ></a>
-              <a
-                v-if="profile.email"
-                class="mdi mdi-email"
-                :href="profile.email"
-              ></a>
+                  <a v-if="profile.linkedin" :href="profile.linkedin">
+                    <img
+                      class="linkedin-img"
+                      src="https://sguru.org/wp-content/uploads/2018/02/linkedin-png-linkedin-icon-1600.png"
+                      alt=""
+                  /></a>
+                  <a v-if="profile.email" :href="profile.email">
+                    <img
+                      class="email-img"
+                      src="https://th.bing.com/th/id/OIP.TODrg8JbRbVEcJaWHbeN8gHaHa?w=202&h=202&c=7&r=0&o=5&pid=1.7"
+                      alt=""
+                    />
+                  </a>
+                </div>
+                <div class="col-12 p-3">
+                  <b
+                    v-if="account.id == profile.id"
+                    title="profile"
+                    class="
+                      btn btn-success
+                      rounded-pill
+                      shadow
+                      d-flex
+                      align-items-center
+                      justify-content-center
+                    "
+                    data-bs-toggle="modal"
+                    data-bs-target="#profile"
+                  >
+                    <p>Edit Profile</p>
+                  </b>
+                  <Modal />
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-6">
-          <ProfileForm v-if="account.id == profile.id" />
-        </div>
-        <div class="col-6">
-          <!-- create post -->
-          <CreatePost v-if="account.id == profile.id" />
-        </div>
+
+      <div class="container-fluid">
+        <!-- create post -->
+        <CreatePost v-if="account.id == profile.id" />
       </div>
     </div>
     <!-- POSTS -->
@@ -88,5 +111,14 @@ export default {
   height: 150px;
   width: 150px;
   border-radius: 50%;
+}
+.github-img {
+  height: 65px;
+}
+.linkedin-img {
+  height: 65px;
+}
+.email-img {
+  height: 65px;
 }
 </style>

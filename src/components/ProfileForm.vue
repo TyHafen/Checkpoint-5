@@ -1,31 +1,83 @@
 <template>
   <div class="container-fluid">
-    <div class="card shadow">
-      <form @submit.prevent="createPost">
+    <div>
+      <form>
+        <div class="form-group">
+          <label for="name">name</label>
+          <input
+            v-model="editable.name"
+            type="text"
+            class="form-control"
+            id="name"
+            aria-describedby="name"
+            placeholder="add your name!"
+          />
+        </div>
         <div class="form-group">
           <label for="bio">Bio</label>
           <input
             v-model="editable.bio"
-            required
             type="text"
             class="form-control"
-            id="photo"
-            aria-describedby="photo"
+            id="bio"
+            aria-describedby="bio"
             placeholder="Whats on your mind?"
           />
         </div>
         <div class="form-group">
-          <label for="image">Profile Photo</label>
+          <label for="picture">Profile Photo</label>
           <input
-            v-model="editable.imgUrl"
+            v-model="editable.picture"
             type="text"
             class="form-control"
-            id="image"
+            id="picture"
             placeholder="place photo URL here"
           />
         </div>
-
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="form-group">
+          <label for="github">Github</label>
+          <input
+            v-model="editable.github"
+            type="text"
+            class="form-control"
+            id="github"
+            placeholder="Link to github"
+          />
+        </div>
+        <div class="form-group">
+          <label for="linkedin">LinkedIn</label>
+          <input
+            v-model="editable.linkedin"
+            type="text"
+            class="form-control"
+            id="linkedin"
+            placeholder="Link to LinkedIn"
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            v-model="editable.email"
+            type="text"
+            class="form-control"
+            id="email"
+            placeholder="email"
+          />
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="gradute"
+          />
+          <label class="form-check-label" for="flexCheckDefault">
+            Graduated
+          </label>
+        </div>
+        <button @click="update()" class="btn btn-dark d-flex mt-3">
+          Submit
+        </button>
       </form>
     </div>
   </div>
@@ -34,20 +86,22 @@
 
 <script>
 import { AppState } from "../AppState";
-import { computed, reactive, onMounted, ref } from "vue";
+import { computed, reactive, onMounted, ref, watchEffect } from "vue";
 import { logger } from "../utils/Logger";
 import Pop from "../utils/Pop";
 import { postsService } from "../services/PostsService";
+import { accountService } from "../services/AccountService";
 export default {
   setup() {
     let editable = ref({});
-
+    watchEffect(() => {
+      editable.value = AppState.account;
+    });
     return {
       editable,
-      async createPost() {
+      async update() {
         try {
-          await postsService.createPost(editable.value);
-          editable = {};
+          await accountService.update(editable.value);
         } catch (error) {
           logger.error(error);
           Pop.toast(error.message, "error");

@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid col-3">
     <div class="card shadow">
       <form @submit.prevent="createPost">
         <div class="form-group">

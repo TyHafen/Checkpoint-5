@@ -4,39 +4,55 @@
       <div class="card rounded shadow">
         <div class="card-body rounded">
           <div class="row d-flex" @click="goTo('Profile')">
-            <img class="creator-image m-2" :src="post.creator.picture" alt="" />
-            <a
-              v-if="post.creator.github"
-              class="mdi mdi-github"
-              :href="post.creator.github"
-            ></a>
-            <a
-              v-if="post.creator.linkedin"
-              class="mdi mdi-linkedin"
-              :href="post.creator.linkedin"
-            ></a>
-            <a
-              v-if="post.creator.email"
-              class="mdi mdi-email"
-              :href="post.creator.email"
-            ></a>
+            <div class="row">
+              <p class="">
+                {{ new Date(post.createdAt) }}
+              </p>
+              <img
+                class="creator-image m-2 d-flex align-content-rightt"
+                :src="post.creator.picture"
+                alt=""
+              />
+            </div>
+            <div class="col-12">
+              <a v-if="post.creator.github" :href="post.creator.github">
+                <img
+                  class="github-img"
+                  src="https://pngimg.com/uploads/github/github_PNG40.png"
+                  alt=""
+              /></a>
 
+              <a v-if="post.creator.linkedin" :href="post.creator.linkedin">
+                <img
+                  class="linkedin-img"
+                  src="https://sguru.org/wp-content/uploads/2018/02/linkedin-png-linkedin-icon-1600.png"
+                  alt=""
+              /></a>
+              <a v-if="post.creator.email" :href="post.creator.email">
+                <img
+                  class="email-img"
+                  src="https://th.bing.com/th/id/OIP.TODrg8JbRbVEcJaWHbeN8gHaHa?w=202&h=202&c=7&r=0&o=5&pid=1.7"
+                  alt=""
+                />
+              </a>
+            </div>
             <h2 class="p-0 m-1 d-flex align-items-center">
               {{ post.creator.name }}
             </h2>
+            <h3 v-if="post.creator.graduated">graduated</h3>
           </div>
           <h3 v-if="account.id">
             {{ post.likes.length }}
             <i @click="likes(post.id)" class="mdi mdi-heart"></i>
           </h3>
           <div class="d-flex">
-            <p class="card-text body-text p-2">{{ post.body }}</p>
-            <div
-              @click="remove(post.id)"
-              v-if="account.id == profile.id"
-              class="mdi mdi-delete"
-            ></div>
+            <div class="card-text body-text p-2">{{ post.body }}</div>
           </div>
+          <div
+            @click="remove(post.id)"
+            v-if="account.id == profile.id"
+            class="mdi mdi-delete"
+          ></div>
         </div>
         <img v-if="post.imgUrl" :src="post.imgUrl" alt="Card image cap" />
       </div>
@@ -105,6 +121,15 @@ export default {
 }
 
 .body-text {
-  font-size: 16px;
+  font-size: 20px;
+}
+.github-img {
+  height: 65px;
+}
+.linkedin-img {
+  height: 65px;
+}
+.email-img {
+  height: 65px;
 }
 </style>
