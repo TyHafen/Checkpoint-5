@@ -9,7 +9,7 @@
                 {{ new Date(post.createdAt) }}
               </p>
               <img
-                class="creator-image m-2 d-flex align-content-rightt"
+                class="creator-image m-2 d-flex align-content-right"
                 :src="post.creator.picture"
                 alt=""
               />
