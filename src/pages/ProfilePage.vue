@@ -59,7 +59,7 @@
         </div>
       </div>
 
-      <div class="container-fluid">
+      <div class="col-12 container-fluid">
         <!-- create post -->
         <CreatePost v-if="account.id == profile.id" />
       </div>

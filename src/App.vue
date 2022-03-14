@@ -1,23 +1,25 @@
 <template>
-  <div class="row container-fluid m-0 p-0">
-    <div class="col-12 p-0">
-      <header class="sticky-top">
-        <Navbar />
-      </header>
+  <div class="">
+    <div class="row container-fluid m-0 p-0">
+      <div class="col-12 p-0 container-fluid">
+        <header class="sticky-top">
+          <Navbar />
+        </header>
 
-      <main class="background">
-        <router-view />
-      </main>
-      <footer>
-        <div class="bg-dark text-light text-center p-4">
-          <button @click="pageTurn(newerPosts)" class="rounded mx-3">
-            Newer Posts
-          </button>
-          <button @click="pageTurn(olderPosts)" class="rounded mx-3">
-            Older Posts
-          </button>
-        </div>
-      </footer>
+        <main class="background">
+          <router-view />
+        </main>
+        <footer>
+          <div class="bg-dark text-light text-center p-4">
+            <button @click="pageTurn(newerPosts)" class="rounded mx-3">
+              Newer Posts
+            </button>
+            <button @click="pageTurn(olderPosts)" class="rounded mx-3">
+              Older Posts
+            </button>
+          </div>
+        </footer>
+      </div>
     </div>
   </div>
 </template>
