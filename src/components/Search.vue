@@ -1,14 +1,12 @@
 <template>
-  <form class="form-group" @submit.prevent="search">
-    <div class="input-group mb-3">
-      <input
-        v-model="searchTerm"
-        type="text"
-        class="form-control"
-        placeholder="searching for something?"
-      />
-      <button class="btn btn-outline-secondary" type="button">Search</button>
-    </div>
+  <form class="form-group row" @submit.prevent="search">
+    <input
+      v-model="searchTerm"
+      type="text"
+      class="col-6"
+      placeholder="lets search"
+    />
+    <button class="btn btn-outline-primary col-3">search</button>
   </form>
 </template>
 

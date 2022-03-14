@@ -5,7 +5,7 @@
         <Navbar />
       </header>
 
-      <main>
+      <main class="background">
         <router-view />
       </main>
       <footer>
@@ -49,9 +49,7 @@ export default {
 </script>
 <style lang="scss">
 @import "./assets/scss/main.scss";
-
-.side-bar {
-  height: 100vh;
-  background-color: aqua;
+.background {
+  background-color: rgb(107, 130, 172);
 }
 </style>

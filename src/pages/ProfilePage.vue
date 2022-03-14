@@ -2,12 +2,12 @@
   <div class="container-fluid">
     <!-- Profile content -->
     <div class="row justify-content-center align-content-center">
-      <div class="col-12 d-flex justify-content-center m-3">
-        <div class="card shadow rounded p-4">
+      <div class="col-6 d-flex justify-content-center m-3">
+        <div class="card shadow rounded p-4 container-fluid">
           <div class="row">
             <div class="col-9">
               <img class="profile-image m-2" :src="profile.picture" alt="" />
-              <h1>{{ profile.name }}</h1>
+              <h2>{{ profile.name }}</h2>
               <h3>{{ profile.bio }}</h3>
             </div>
             <div class="col-3">
@@ -31,9 +31,16 @@
           </div>
         </div>
       </div>
+      <div class="row">
+        <div class="col-6">
+          <ProfileForm v-if="account.id == profile.id" />
+        </div>
+        <div class="col-6">
+          <!-- create post -->
+          <CreatePost v-if="account.id == profile.id" />
+        </div>
+      </div>
     </div>
-    <!-- create post -->
-    <CreatePost v-if="account.id == profile.id" />
     <!-- POSTS -->
     <div class="row justify-content-center">
       <div v-for="p in posts" :key="p.id" class="col-md-8">

@@ -3,25 +3,25 @@
     <div class="card shadow">
       <form @submit.prevent="createPost">
         <div class="form-group">
-          <label for="post">post</label>
+          <label for="bio">Bio</label>
           <input
-            v-model="editable.body"
+            v-model="editable.bio"
             required
             type="text"
             class="form-control"
-            id="description"
-            aria-describedby="description"
-            placeholder="Whats on your mind"
+            id="photo"
+            aria-describedby="photo"
+            placeholder="Whats on your mind?"
           />
         </div>
         <div class="form-group">
-          <label for="image">Image</label>
+          <label for="image">Profile Photo</label>
           <input
             v-model="editable.imgUrl"
             type="text"
             class="form-control"
             id="image"
-            placeholder="place image URL here"
+            placeholder="place photo URL here"
           />
         </div>
 
